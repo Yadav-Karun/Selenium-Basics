@@ -28,6 +28,9 @@ public class Action extends CommonActions {
 
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement botCheckSubmit;
+	
+	@FindBy(css = "iframe[class='demo-frame lazyloaded']")
+	WebElement iframeDragAndDrop;
 
 	public void mainActionMethod() {
 		goToAction();
@@ -58,6 +61,11 @@ public class Action extends CommonActions {
 	public void openNewWindow() {
 		driver.switchTo().newWindow(WindowType.TAB);
 		driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
-		driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
+		driver.get("XYZ");
+
+		dragAndDrop();
+	}
+	public void dragAndDrop() {
+		driver.switchTo().frame(iframeDragAndDrop);
 	}
 }
