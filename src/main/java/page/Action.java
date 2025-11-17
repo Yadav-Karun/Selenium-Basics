@@ -58,5 +58,6 @@ public class Action extends CommonActions {
 	public void openNewWindow() {
 		driver.switchTo().newWindow(WindowType.TAB);
 		driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
+		driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
 	}
 }
