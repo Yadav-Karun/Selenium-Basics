@@ -102,7 +102,7 @@ public class BaseTest {
 		return action;
 	}
 
-	public List<TestData> getJsonData(String filePath) throws IOException {
+	public static List<TestData> getJsonData(String filePath) throws IOException {
 		String jsonData = Files.readString(Paths.get(filePath));
 
 		List<TestData> data = mapper.readValue(jsonData, new TypeReference<List<TestData>>() {
@@ -110,11 +110,11 @@ public class BaseTest {
 		return data;
 	}
 	
-	@AfterMethod(alwaysRun = true)
-	public void endSetUp() {
-		if (getDriver() != null) {
-			getDriver().quit();
-			threadLocalDriver.remove();
-		}
-	}
+//	@AfterMethod(alwaysRun = true)
+//	public void endSetUp() {
+//		if (getDriver() != null) {
+//			getDriver().quit();
+//			threadLocalDriver.remove();
+//		}
+//	}
 }

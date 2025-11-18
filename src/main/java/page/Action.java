@@ -28,9 +28,12 @@ public class Action extends CommonActions {
 
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement botCheckSubmit;
-	
-	@FindBy(css = "iframe[class='demo-frame lazyloaded']")
+
+	@FindBy(css = "//iframe[contains(@src, '../../demoSite/practice/droppable/photo-manager.html')]")
 	WebElement iframeDragAndDrop;
+	
+	@FindBy(css = "//ul[contains(@id, 'gallery')] //h5[text() = 'High Tatras'] /parent::li")
+	WebElement iframeDrag;
 
 	public void mainActionMethod() {
 		goToAction();
@@ -41,7 +44,7 @@ public class Action extends CommonActions {
 
 	public void goToAction() {
 		driver.get("https://www.amazon.in/");
-		
+
 		if (isVisible(botCheckSubmitBY)) {
 			botCheckSubmit.click();
 			waitForUrl("amazon.in");
@@ -64,6 +67,7 @@ public class Action extends CommonActions {
 
 		dragAndDrop();
 	}
+
 	public void dragAndDrop() {
 		driver.switchTo().frame(iframeDragAndDrop);
 	}
