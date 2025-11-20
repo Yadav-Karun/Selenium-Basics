@@ -9,7 +9,7 @@ import testbase.BaseTest;
 
 public class ActionsTesting extends BaseTest {
 
-	@Test(dataProvider = "sendData", retryAnalyzer = retry.RetryAnalyzer.class, dataProviderClass = Dataprovider.class, enabled = false)
+	@Test(dataProvider = "sendData", retryAnalyzer = retry.RetryAnalyzer.class, dataProviderClass = Dataprovider.class, enabled = true)
 	public void actionFunctionalityTesting(TestData input) throws InterruptedException {
 
 		Action action = testAction();

@@ -29,11 +29,20 @@ public class Action extends CommonActions {
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement botCheckSubmit;
 
-	@FindBy(css = "//iframe[contains(@src, '../../demoSite/practice/droppable/photo-manager.html')]")
+	@FindBy(xpath = "//iframe[contains(@src, 'photo-manager.html')]")
 	WebElement iframeDragAndDrop;
-	
-	@FindBy(css = "//ul[contains(@id, 'gallery')] //h5[text() = 'High Tatras'] /parent::li")
+
+	@FindBy(xpath = "//ul[contains(@id,'gallery')]//h5[text()='High Tatras']/parent::li")
 	WebElement iframeDrag;
+
+	@FindBy(xpath = "//div[contains(@id, 'trash')]")
+	WebElement iframeDrop;
+
+	@FindBy(xpath = "//div[contains(@class, 'elementor elementor-1306 elementor-location-footer')]")
+	WebElement footer;
+
+	@FindBy(xpath = "//ul[contains(@id, 'menu-1-32c3b995')]//a")
+	List<WebElement> footerLinks;
 
 	public void mainActionMethod() {
 		goToAction();
@@ -62,7 +71,7 @@ public class Action extends CommonActions {
 	}
 
 	public void openNewWindow() {
-		driver.switchTo().newWindow(WindowType.TAB);
+		driver.switchTo().newWindow(WindowType.WINDOW);
 		driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
 
 		dragAndDrop();
@@ -70,5 +79,38 @@ public class Action extends CommonActions {
 
 	public void dragAndDrop() {
 		driver.switchTo().frame(iframeDragAndDrop);
+		action.clickAndHold(iframeDrag).moveToElement(iframeDrop).release().build().perform();
+
+		driver.switchTo().defaultContent();
+		openAllTab();
+	}
+
+	public void openAllTab() {
+		driver.switchTo().newWindow(WindowType.TAB);
+		driver.get("https://www.path2usa.com/travel-companion/");
+
+		scrollIntoView(footer);
+
+		for (WebElement footerLink : footerLinks) {
+			isClickable(footerLink);
+
+			String url = footerLink.getAttribute("href");
+			if (url == null || url.isEmpty()) {
+				continue;
+			}
+
+			String newTab = Keys.chord(Keys.CONTROL, Keys.ENTER);
+			footerLink.sendKeys(newTab);
+		}
+		trackWindows();
+	}
+
+	public void trackWindows() {
+		Set<String> handles = driver.getWindowHandles();
+		List<String> windows = new ArrayList<>(handles);
+		System.out.println("Total Windows/Tabs: " + windows.size());
+		for (int i = 0; i < windows.size(); i++) {
+			System.out.println("Index: " + i);
+		}
 	}
 }
