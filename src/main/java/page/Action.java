@@ -48,7 +48,7 @@ public class Action extends CommonActions {
 		goToAction();
 		doubleClick();
 		hoverOver();
-		openNewWindow();
+		openAllTab();
 	}
 
 	public void goToAction() {
@@ -63,28 +63,12 @@ public class Action extends CommonActions {
 	public void doubleClick() {
 		action.moveToElement(moveToSearchSection).click().keyDown(Keys.LEFT_SHIFT).keyUp(Keys.LEFT_SHIFT).sendKeys("PS")
 				.sendKeys("5").click().doubleClick().build().perform();
-
 	}
 
 	public void hoverOver() {
 		action.moveToElement(hover).contextClick().build().perform();
 	}
-
-	public void openNewWindow() {
-		driver.switchTo().newWindow(WindowType.WINDOW);
-		driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
-
-		dragAndDrop();
-	}
-
-	public void dragAndDrop() {
-		driver.switchTo().frame(iframeDragAndDrop);
-		action.clickAndHold(iframeDrag).moveToElement(iframeDrop).release().build().perform();
-
-		driver.switchTo().defaultContent();
-		openAllTab();
-	}
-
+	
 	public void openAllTab() {
 		driver.switchTo().newWindow(WindowType.TAB);
 		driver.get("https://www.path2usa.com/travel-companion/");
@@ -102,15 +86,36 @@ public class Action extends CommonActions {
 			String newTab = Keys.chord(Keys.CONTROL, Keys.ENTER);
 			footerLink.sendKeys(newTab);
 		}
+		openNewWindow();
+	}
+
+	public void openNewWindow() {
+		driver.switchTo().newWindow(WindowType.WINDOW);
+		driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
+
+		dragAndDrop();
+	}
+
+	public void dragAndDrop() {
+		driver.switchTo().frame(iframeDragAndDrop);
+		action.clickAndHold(iframeDrag).moveToElement(iframeDrop).release().build().perform();
+
+		driver.switchTo().defaultContent();
 		trackWindows();
 	}
 
 	public void trackWindows() {
 		Set<String> handles = driver.getWindowHandles();
 		List<String> windows = new ArrayList<>(handles);
-		System.out.println("Total Windows/Tabs: " + windows.size());
-		for (int i = 0; i < windows.size(); i++) {
+		int numberOfTabs = windows.size();
+		for (int i = 0; i < numberOfTabs; i++) {
 			System.out.println("Index: " + i);
 		}
+		switchToWindow(0);
+	}
+	
+	public void switchToWindow(int index) {
+	    List<String> windows = new ArrayList<>(driver.getWindowHandles());
+	    driver.switchTo().window(windows.get(index));
 	}
 }

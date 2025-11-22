@@ -1,5 +1,6 @@
 package testbase;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +9,9 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -91,12 +95,12 @@ public class BaseTest {
 		Dropdown goToDropdown = new Dropdown(getDriver());
 		return goToDropdown;
 	}
-	
+
 	public Alerts testAlerts() {
 		Alerts alert = new Alerts(getDriver());
 		return alert;
 	}
-	
+
 	public Action testAction() {
 		Action action = new Action(getDriver());
 		return action;
@@ -109,7 +113,26 @@ public class BaseTest {
 		});
 		return data;
 	}
-	
+
+	public static String getScreenshot(String testCaseName) throws IOException {
+		TakesScreenshot screenshot = (TakesScreenshot) getDriver();
+
+		File source = screenshot.getScreenshotAs(OutputType.FILE);
+
+		File screenshotFolder = new File(
+				System.getProperty("user.dir") + File.separator + "screenshots" + File.separator + testCaseName);
+
+		screenshotFolder.mkdirs();
+
+		File screenshotFile = new File(screenshotFolder, testCaseName + ".png");
+
+		// 5. Copy screenshot from temporary location to final file
+		FileUtils.copyFile(source, screenshotFile);
+
+		// 6. Return full path so it can be attached in reports
+		return screenshotFile.getAbsolutePath();
+	}
+
 //	@AfterMethod(alwaysRun = true)
 //	public void endSetUp() {
 //		if (getDriver() != null) {
