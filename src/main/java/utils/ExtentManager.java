@@ -26,7 +26,7 @@ public class ExtentManager {
 			String windowSTime = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS").format(new Date());
 			extentReport.setSystemInfo("Execution Time (Windows)", windowSTime);
 		}
-		return null;
+		return extentReport;
 	}
 	
 }
