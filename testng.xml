@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="classes" thread-count="3">
+	
+	<listeners>
+		<listener class-name="listeners.TestListeners" />
+	</listeners>
+	
   <test name="UI Tests">
     <classes>
-      <class name="test.DropdownTesting"/>
-      <class name="test.AlertTesting"/>
-      <class name="test.ActionsTesting"/>
+		<class name="test.DropdownTesting"/>
+		<class name="test.AlertTesting"/>
+		<class name="test.ActionsTesting"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

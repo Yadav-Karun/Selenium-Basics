@@ -9,12 +9,32 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">35,909</td><td></td><td></td></tr>
+<tr><td><a href="#t0">UI Tests</a></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">51,475</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="3">test.BasicFunctionality</td><td><a href="#m0">actionFunctionalityTesting</a></td><td rowspan="1">1763345719445</td><td rowspan="1">15798</td></tr><tr class="passedeven"><td><a href="#m1">alertTesting</a></td><td rowspan="1">1763345736201</td><td rowspan="1">7661</td></tr><tr class="passedeven"><td><a href="#m2">dropdownTesting</a></td><td rowspan="1">1763345744737</td><td rowspan="1">8778</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">UI Tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">test.DropdownTesting</td><td><a href="#m0">dropdownTesting</a></td><td rowspan="1">1764401542227</td><td rowspan="1">46962</td></tr><tr><th colspan="4">UI Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">test.ActionsTesting</td><td><a href="#m1">actionFunctionalityTesting</a></td><td rowspan="1">1764401542225</td><td rowspan="1">41796</td></tr><tr class="passedodd"><td rowspan="1">test.AlertTesting</td><td><a href="#m2">alertTesting</a></td><td rowspan="1">1764401542238</td><td rowspan="1">9189</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">test.BasicFunctionality#actionFunctionalityTesting</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>pojo.TestData@d1a10ac</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">test.BasicFunctionality#alertTesting</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>pojo.TestData@55ec556</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">test.BasicFunctionality#dropdownTesting</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>pojo.TestData@715d6168</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>UI Tests</h2><h3 id="m0">test.DropdownTesting#dropdownTesting</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>pojo.TestData@610a5f45</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: Cannot locate option with value: AEeD
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.1&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.Select.findOptionsByValue(Select.java:289)
+	at org.openqa.selenium.support.ui.Select.selectByValue(Select.java:194)
+	at page.Dropdown.chooseCurrency(Dropdown.java:175)
+	at page.Dropdown.travellers(Dropdown.java:167)
+	at page.Dropdown.toDate(Dropdown.java:154)
+	at page.Dropdown.fromDate(Dropdown.java:137)
+	at page.Dropdown.too(Dropdown.java:116)
+	at page.Dropdown.from(Dropdown.java:103)
+	at page.Dropdown.dropdownFunctionality(Dropdown.java:86)
+	at test.DropdownTesting.dropdownTesting(DropdownTesting.java:16)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 11 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">test.ActionsTesting#actionFunctionalityTesting</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>pojo.TestData@e18c51b</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">test.AlertTesting#alertTesting</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>pojo.TestData@1bbc15c4</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
